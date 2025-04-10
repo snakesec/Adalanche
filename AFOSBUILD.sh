@@ -20,7 +20,7 @@ fi
 
 strip adalanche-bins/adalanche
 
-GOOS=windows go build -o adalanche-bins/collector.exe adalanche/collector.go
+GOOS=windows GOARCH=amd64 go build -o adalanche-bins/collector.exe -tags collector ./adalanche/
 
 if [ $? -eq 0 ]
 then
