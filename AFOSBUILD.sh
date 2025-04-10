@@ -1,4 +1,5 @@
 rm -rf /opt/ANDRAX/adalanche
+rm -rf /opt/ANDRAX/bin/adalanche
 
 mkdir /opt/ANDRAX/adalanche
 
