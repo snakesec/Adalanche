@@ -53,4 +53,4 @@ else
   exit 1
 fi
 
-cp -Rf andraxbin/* /opt/ANDRAX/bin
+ln -s /opt/ANDRAX/adalanche/adalanche /opt/ANDRAX/bin
