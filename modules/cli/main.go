@@ -102,7 +102,7 @@ func loadConfiguration(cmd *cobra.Command) {
 	if err := viper.ReadInConfig(); err == nil {
 		ui.Info().Msgf("Using configuration file: %v", viper.ConfigFileUsed())
 	} else {
-		ui.Info().Msgf("No settings loaded from %v: %v", err.Error())
+		ui.Info().Msgf("No settings loaded from %v: %v", configfilename, err.Error())
 	}
 
 	bindFlags(cmd)
@@ -134,6 +134,8 @@ func init() {
 			} else {
 				ui.SetLogFile(*logfile, ll)
 			}
+		} else {
+			ui.SetLogFile("", ui.LevelInfo) // Tell logger to stop buffering early output
 		}
 
 		ui.Info().Msg(version.VersionString())

@@ -28,7 +28,7 @@ func GetSSPIClient() (ldap.GSSAPIClient, error) {
 	return gssapi.NewSSPIClient()
 }
 
-//go:generate go run github.com/dmarkham/enumer -type=LDAPAuth -json -output ldap_native_enums_windows.go
+//go:generate go tool github.com/dmarkham/enumer -type=LDAPAuth -json -output ldap_native_enums_windows.go
 
 type LDAPAuth uint
 
@@ -108,9 +108,10 @@ func (a *WAD) Connect() error {
 			chosenserver = server
 			break
 		}
+		ui.Error().Msgf("Problem connecting to %v: %v - trying next server...", server, err)
 	}
 	if err != nil {
-		return fmt.Errorf("Problem connecting to all servers: %v", err)
+		return fmt.Errorf("Problem connecting to all servers, giving up")
 	}
 	ui.Info().Msgf("Connected to %v:%v", chosenserver, a.Port)
 

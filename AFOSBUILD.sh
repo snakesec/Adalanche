@@ -6,7 +6,7 @@ mkdir /opt/ANDRAX/adalanche
 mkdir adalanche-bins
 
 COMMIT=$(git rev-parse --short HEAD)
-VERSION="v2025.2.6-16-ANDRAX-NG"
+VERSION="v2025.06.02-ANDRAX-NG"
 
 go build -ldflags "-X github.com/lkarlslund/adalanche/modules/version.Commit=$COMMIT -X github.com/lkarlslund/adalanche/modules/version.Version=$VERSION" -o adalanche-bins/adalanche adalanche/main.go
 
@@ -54,4 +54,4 @@ else
   exit 1
 fi
 
-ln -s /opt/ANDRAX/adalanche/adalanche /opt/ANDRAX/bin
+ln -s /opt/ANDRAX/adalanche/adalanche /opt/ANDRAX/bin/adalanche
